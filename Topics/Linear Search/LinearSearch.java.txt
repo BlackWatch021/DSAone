@@ -1,0 +1,30 @@
+//Given an array nums of integers, return how many of them contain an even number of digits.
+
+//Java
+public class evenNumber {
+    public static void main(String[] args) {
+        int[] nums = {555,23,901,482,1771,23,4443,65};
+        int res=findNumbers(nums);
+        System.out.println(res);
+    }
+
+    static int findNumbers(int[] nums) {
+        int result=0;
+        for(int el:nums){
+            if(even(el)){
+                result++;
+            }
+        }
+        return result;
+    }
+
+    static boolean even(int num){
+        int temp=0;
+        for(int i=0;num>0;i++){
+            temp++;
+            num/=10;
+        }
+        return temp % 2 == 0;
+    }
+}
+

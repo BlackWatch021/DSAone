@@ -1,0 +1,62 @@
+/*
+Given a matrix, you have to find the given target in the matrix and return its positions if it is present in it, else
+return [-1,-1]
+* */
+package com.company;
+
+import java.util.Arrays;
+
+public class binarySearchOnMatrix {
+    public static void main(String[] args) {
+        int[][] matrix={{1, 2, 3, 4},
+                {5, 6, 7, 8},
+                {9, 10, 11, 12}};
+        int target=6;
+
+        System.out.println(Arrays.toString(search(matrix,target)));
+    }
+
+    static int[] search(int[][] matrix,int target){
+        int rowMin=0;
+        int rowMax=matrix.length-1;
+        int colMin=0;
+        int colMax=matrix[0].length-1;
+        int colMid=(colMin+colMax)/2;
+        int[] ans;
+        while(rowMin<rowMax-1){
+            int rowMid=(rowMin+rowMax)/2;
+            if(matrix[rowMid][colMid]>target){
+                rowMax=rowMax-1;
+            }
+            else if(matrix[rowMid][colMid]<target){
+                rowMin=rowMid+1;
+            }
+            else{
+                return new int[]{rowMid,colMid};
+            }
+        }
+        ans=binarySearch(matrix[rowMin],target,rowMin);
+        if(ans[0]==-1){
+            ans=binarySearch(matrix[rowMax],target,rowMax);
+        }
+        return ans;
+    }
+    static int[] binarySearch(int[] arr,int target,int row){
+        int start=0;
+        int end=arr.length-1;
+        while(start<=end){
+            int mid=(start+end)/2;
+            if(arr[mid]>target){
+                end=mid-1;
+            }
+            else if(arr[mid]<target){
+                start=mid+1;
+            }
+            else{
+                return new int[]{row,mid};
+            }
+        }
+        return new int[]{-1,-1};
+    }
+
+}

@@ -1,0 +1,24 @@
+package com.company;
+import java.util.Arrays;
+public class selectionSort {
+    public static void main(String[] args) {
+        int[] arr = {0,-2,-4,-1,-6,-3,-5};
+        System.out.println(Arrays.toString(selectionSort(arr)));
+    }
+    static int[] selectionSort(int[] arr){
+        for(int i=0;i<arr.length;i++){
+            int big=arr[0];
+            int index=0;
+            for (int j = 0; j <=arr.length-1-i ; j++) {
+                if(arr[j]>big){
+                    big=arr[j];
+                    index=j;
+                }
+            }
+            int temp=arr[arr.length-1-i];
+            arr[arr.length-1-i]=arr[index];
+            arr[index]=temp;
+        }
+        return arr;
+    }
+        }

@@ -1,0 +1,33 @@
+/*Given an array, which contains positive integers, we have to find how many numbers in the array contains even numbers of digits;
+ex  555=3 digits(not even);
+    23=2 digits(even);
+*/
+package com.company.linearSearch;
+
+public class evenNumber {
+    public static void main(String[] args) {
+        int[] nums = {555,23,11,23,341};
+        int res=findNumbers(nums);
+        System.out.println(res);
+    }
+
+    static int findNumbers(int[] nums) {
+        int result=0;
+        for(int el:nums){
+            if(even(el)){
+                result++;
+            }
+        }
+        return result;
+    }
+
+    static boolean even(int num){
+        int temp=0;
+        for(int i=0;num>0;i++){
+            temp++;
+            num/=10;
+        }
+        return temp % 2 == 0;
+    }
+}
+

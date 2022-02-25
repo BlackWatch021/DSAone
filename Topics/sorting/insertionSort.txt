@@ -1,0 +1,28 @@
+package com.company.sorting;
+import java.util.Arrays;
+public class insertionSort {
+    public static void main(String[] args) {
+        int[] arr={5,4,3,2,1};
+        System.out.println(Arrays.toString(insertionSort(arr)));
+
+    }
+    static int[] insertionSort(int[] arr){
+        for (int i = 0; i <= arr.length-2; i++) {
+            //closely monitor the conditions for i and j
+            //i <=arr.length-2, if it i is more than arr.length-2. Then j will go out of bound.
+            for (int j = i+1; j>0 ; j--) {
+                if(arr[j]<arr[j-1]){
+                    int temp=arr[j];
+                    arr[j]=arr[j-1];
+                    arr[j-1]=temp;
+                }
+                //breaking the loop, cause arr[j]<arr[j-1] is false, means that now the left side is sorted and the element
+                // is in the right place(index)
+                else{
+                    break;
+                }
+            }
+        }
+       return arr;
+    }
+}

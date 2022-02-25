@@ -1,0 +1,34 @@
+package com.company.sorting.cyclicSort;
+
+import java.util.Arrays;
+
+public class cyclicSort {
+    public static void main(String[] args) {
+        int[] arr={2,3,4,1,5};
+        cyclicSort(arr);
+        System.out.println(Arrays.toString(arr));
+    }
+    static void cyclicSort(int[] arr){
+        int i=0;
+        while(i<arr.length){
+            int correctIndex=arr[i]-1;
+            /*correctIndex gives the correct index where the current element should be. For the given range 1-n, the index
+             * value for a particular element is (element-1).
+             * That's why correctIndex takes the current element and subtract 1 from it.
+             * In case the range is 0-n, then the correct place of the elements is itself, cause 0 will be place at index 0,
+             *  1 will be placed at index 1 .... n will be placed at index n*/
+
+
+            /*Checking if the current element (arr[i]) is at currect place, if not, then swap it.
+            Otherwise increase the pinter(i) */
+            if(arr[i]!=arr[correctIndex]){
+                int temp=arr[i];
+                arr[i]=arr[correctIndex];
+                arr[correctIndex]=temp;
+            }
+            else{
+                i++;
+            }
+        }
+    }
+}

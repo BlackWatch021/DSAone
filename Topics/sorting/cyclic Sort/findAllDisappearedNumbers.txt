@@ -1,0 +1,67 @@
+/*
+* https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/
+
+Given an array nums of n integers where nums[i] is in the range [1, n], return an array of all the integers in the
+* range [1, n] that do not appear in nums.
+
+
+
+Example 1:
+
+Input: nums = [4,3,2,7,8,2,3,1]
+Output: [5,6]
+Example 2:
+
+Input: nums = [1,1]
+Output: [2]
+
+
+Constraints:
+
+n == nums.length
+1 <= n <= 105
+1 <= nums[i] <= n
+
+
+Follow up: Could you do it without extra space and in O(n) runtime? You may assume the returned list does not count as
+* extra space.
+ */
+
+
+
+package com.company.sorting.cyclicSort;
+import java.util.ArrayList;
+import java.util.List;
+public class findAllDisappearedNumbers {
+    public static void main(String[] args) {
+        int[] arr={1,1};
+        System.out.println(findDisappearedNumbers(arr));
+    }
+    /*Approach
+    * 1st we will sort the elements in their correct position if possible. Ignore the duplicate numbers
+    * Then we will add the index of the numbers those aren't in the correct position*/
+    static List<Integer> findDisappearedNumbers(int[] arr){
+        int i=0;
+        while(i<arr.length){
+            int correct=arr[i]-1;
+             if(arr[i]!=arr[correct]){
+                int temp=arr[i];
+                arr[i]=arr[correct];
+                arr[correct]=temp;
+            }
+                else{
+                    i++;
+            }
+
+        }
+        int index=0;
+        List<Integer> list=new ArrayList<Integer>();
+        while(index<arr.length){
+            if(arr[index]!=index+1){
+                list.add(index+1);
+            }
+            index++;
+        }
+        return list;
+    }
+}

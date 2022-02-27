@@ -1,0 +1,95 @@
+/*
+* Sort Colors
+* https://leetcode.com/problems/sort-colors/
+*
+* Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue.
+
+We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
+
+You must solve this problem without using the library's sort function.
+
+
+
+Example 1:
+
+Input: nums = [2,0,2,1,1,0]
+Output: [0,0,1,1,2,2]
+Example 2:
+
+Input: nums = [2,0,1]
+Output: [0,1,2]
+* */
+
+
+
+/*
+This solution is working but it's not thw best solution, cause its very slow and takes a lot of time.
+Optimized solution idea is after this
+* */
+package com.company.sorting;
+
+import java.util.Arrays;
+
+public class sortColors {
+    public static void main(String[] args) {
+        int[] arr={2,0,1};
+        sortColors(arr);
+    }
+    static void sortColors(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
+            int big=nums[0];
+            int index=0;
+            for (int j = 0; j <= nums.length-1-i; j++) {
+                if(nums[j]>big){
+                    big=nums[j];
+                    index=j;
+                }
+            }
+            int temp=nums[nums.length-1-i];
+            nums[nums.length-1-i]=nums[index];
+            nums[index]=temp;
+        }
+        System.out.println(Arrays.toString(nums));
+    }
+}
+
+
+
+
+
+/*
+This is the approach of the optimize solution, but it's not working properly. Approach is to reduce the time complexity as
+mush as we can. Previous solution's TC is (n^2). But as we know that the array contains only 0,1,2. Therefore we can
+reduce the TC to (n). For this we will just loop over the array, and if we get 0, then we will add it in the start or if
+we 2 then we will add it in the last. For one we will just skip it.
+* */
+
+
+//* public class sortColors {
+//    public static void main(String[] args) {
+//        int[] arr={2,0,2,1,1,1,1,1,1,0,0,2,0};
+//        sortColors(arr);
+//    }
+//    static void sortColors(int[] nums) {
+//        int zero=0;
+//        int two=nums.length-1;
+//        for (int i = 0; i < nums.length; i++) {
+//            if(nums[i]==0){
+//                int temp=nums[i];
+//                nums[i]=nums[zero];
+//                nums[zero]=temp;
+//                zero++;
+////                i--;
+//            }
+//            else if(nums[i]==2){
+//                int temp=nums[i];
+//                nums[i]=nums[two];
+//                nums[two]=temp;
+//                two--;
+////                i--;
+//            }
+//        }
+//        System.out.println(Arrays.toString(nums));
+//    }
+//}
+//

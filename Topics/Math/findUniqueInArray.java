@@ -14,6 +14,7 @@ public class findUniqueInArray {
     }
     /*
     Here we are using the XOR, to find the unique element in the array. See the debugger for better understanding;
+    Note numbers repeats only twice time 
     XOR(^)
     a^a=0
     a^1=complement(a)

@@ -21,7 +21,11 @@ public class findNthMagicNumber {
 /*
 * nth magic number is obtained by multiplying each bit with the power of 5 then adding them together.
 * Power of 5 increases form 1 to n
-* Ex-
+* Ex-1
 * num= 101101;
 * nth magic number=1*(5^6)+0*(5^5)+1*(5^4)+1*(5^3)+0*(5^2)+1*(5^1)
+*
+* Ex-2
+ * num= 1101;
+ * nth magic number=1*(5^4)+1*(5^3)+0*(5^2)+1*(5^1)
 * */

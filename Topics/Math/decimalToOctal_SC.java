@@ -1,8 +1,8 @@
 package com.company.Math;
 
-public class decimalToOctal {
+public class decimalToOctal_SC {
     public static void main(String[] args) {
-        int num=10;
+        int num=8;
         System.out.println(toOctal(num));
     }
     static int toOctal(int num){
@@ -13,6 +13,13 @@ public class decimalToOctal {
             ans=remainder+(ans*10);
             num/=10;
         }
-        return ans;
+        int toReturn=0;
+
+        //Rotating the obtained number
+        while(ans>0){
+            toReturn=(toReturn*10)+(ans%10);
+            ans/=10;
+        }
+        return toReturn;
     }
 }

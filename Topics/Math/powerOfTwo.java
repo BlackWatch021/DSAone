@@ -8,7 +8,7 @@ public class powerOfTwo {
     public static void main(String[] args) {
 //        int num=16;
         for (int i = 1; i <= 64; i++) {
-            if (power(i)) {
+            if (power3(i)) {
                 System.out.println(i);
             }
         }
@@ -16,18 +16,18 @@ public class powerOfTwo {
     //Approach1
     /*Taking the lcm of the passed number, if the remainder is not zero. Means the number is not the power of two
      * */
-//    static boolean power(int num){
-//        if(num==0 || num==1){
-//            return false;
-//        }
-//        while(num>2){
-//            if(num%2!=0){
-//                return false;
-//            }
-//            num/=2;
-//        }
-//        return true;
-//    }
+    static boolean power1(int num){
+        if(num==0 || num==1){//exception
+            return false;
+        }
+        while(num>2){
+            if(num%2!=0){
+                return false;
+            }
+            num/=2;
+        }
+        return true;
+    }
 
     /*Approach 2
      * A number is power of two if it contains 1 bit only once in the binary form.
@@ -40,24 +40,24 @@ public class powerOfTwo {
      * In this will count the occurrence of 1, if count is not equal to 1. Then return false
      * */
 
-//    static boolean power(int num){
-//        int count=0;
-//        if(num==0||num==1){
-//            return false;
-//        }
-//        while(num>0){
-//            if((num &1)==1){
-//                count+=1;
-//            }
-//            num=num>>1;
-//        }
-//        if(count!=1){
-//            return false;
-//        }
-//        return true;
-//    }
+    static boolean power2(int num){
+        int count=0;
+        if(num==0||num==1){//exception
+            return false;
+        }
+        while(num>0){
+            if((num &1)==1){
+                count+=1;
+            }
+            num=num>>1;
+        }
+        if(count!=1){
+            return false;
+        }
+        return true;
+    }
 
-    /*Approach 2
+    /*Approach 3
     We know that the number is of power two if it only contains 1bit digit only once in binary form
     There taking (8)= 1000 = 111+1 (two's complement)
 
@@ -71,8 +71,8 @@ public class powerOfTwo {
     binary=111
     111 & 110= 110!=0  not the power of two
     * */
-static boolean power(int num){
-    if(num==1 || num==0){
+static boolean power3(int num){
+    if(num==1 || num==0){//exception
         return false;
     }
     if((num & num-1)==0){

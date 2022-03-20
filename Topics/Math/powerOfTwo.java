@@ -40,20 +40,44 @@ public class powerOfTwo {
      * In this will count the occurrence of 1, if count is not equal to 1. Then return false
      * */
 
-    static boolean power(int num){
-        int count=0;
-        if(num==0||num==1){
-            return false;
-        }
-        while(num>0){
-            if((num &1)==1){
-                count+=1;
-            }
-            num=num>>1;
-        }
-        if(count!=1){
-            return false;
-        }
+//    static boolean power(int num){
+//        int count=0;
+//        if(num==0||num==1){
+//            return false;
+//        }
+//        while(num>0){
+//            if((num &1)==1){
+//                count+=1;
+//            }
+//            num=num>>1;
+//        }
+//        if(count!=1){
+//            return false;
+//        }
+//        return true;
+//    }
+
+    /*Approach 2
+    We know that the number is of power two if it only contains 1bit digit only once in binary form
+    There taking (8)= 1000 = 111+1 (two's complement)
+
+    So if we and(&) the passed number with one number smaller than it, and the ans is zero. It means that the number
+    is of the power two.
+    EX1-num=8
+       binary=1000
+       1000 & 111=0    Power of two
+
+    EX2-num=7
+    binary=111
+    111 & 110= 110!=0  not the power of two
+    * */
+static boolean power(int num){
+    if(num==1 || num==0){
+        return false;
+    }
+    if((num & num-1)==0){
         return true;
     }
+    return false;
+}
 }

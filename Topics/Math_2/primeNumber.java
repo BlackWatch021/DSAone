@@ -17,7 +17,39 @@ public class primeNumber {
         }
         System.out.println(count);
     }
-    
+    /*Approach 2
+    Approach 1 has the draw back as it is useful for a particular range only.
+    But not with approach 2
+    SO for Primality Test of a number ,take the square root of the number;
+    Then take all the number smaller than the square root of the number but bigger than 2 and check whether the
+    number is divisible by these numbers.
+    If YES, then it's not prime
+    Else it is a prime number
+
+    we take the square root of the number because that allow us to reduce the number means less time complexity
+    EX-num=81
+    Approach1-either we can check for the divisibility of num with each number from 2-(num-1).
+       Time complexity=O(n-2)
+    Approach2-reduce the size, by taking the square root. Then checking it is divisible by number less than
+    it(square root number)
+       Time complexity=O(sqrt(num))
+    c<sqrt(num)
+    or
+    c*c<num   taking square both side
+    */
+    static boolean isPrime(int num){
+        if(num<=1){
+            return false;
+        }
+        int c=2;
+        while(c*c<=num){
+            if(num%c==0){
+                return false;
+            }
+            c++;
+        }
+        return true;
+    }
 
 
     /*Approach 1

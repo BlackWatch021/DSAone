@@ -3,13 +3,38 @@
 package com.company.Math_2;
 
 
+import java.util.ArrayList;
 
 public class factorsOfNumber {
     public static void main(String[] args) {
         int num = 25;
 //        factors(num);
-        factors2(num);
+//        factors2(num);
+        factors3(num);
     }
+
+    /*Approach 3
+    * It is similar to that of approach 2, only difference is that we will sort the result in this, for this we
+    * will be using the ArrrayList, meaning the space complexity won't be constant.
+    * */
+    static void factors3(int num){
+        ArrayList<Integer> factors= new ArrayList<Integer>();
+        for (int i = 1; i <=Math.sqrt(num); i++) {
+            if(num%i==0){
+                if(num/i==i){
+                    System.out.print(i+" ");
+                }
+                else{
+                    System.out.print(i+" ");
+                    factors.add(num/i);
+                }
+            }
+        }
+        for (int i = factors.size()-1; i>=0; i--) {
+            System.out.print(factors.get(i)+" ");
+        }
+    }
+
 
     /*Approach 2
      * It is more optimize solution

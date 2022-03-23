@@ -7,14 +7,50 @@ package com.company.Math_2;
 
 public class squareRoot {
     public static void main(String[] args) {
-        int num=20;
+        int num=40;
         int precision=3;
 //        System.out.println(root1(num));
         for (int i = 0; i < 21; i++) {
-        System.out.println(i+":"+precision(i,precision));
+//        System.out.println(i+":"+precision(i,precision));
         }
+        System.out.println(newtonMethod(num));
+        //6.40195561907565   1
+        //6.325023209103984   0.5
     }
+    /*Approach 4
+    * Here we will be using the newton rapson's method
+    * This method provides us a formula to find the root of the number, in this first we assume a number to be the
+    *  root of the number.
+    * Formula
+    * root of N=(X+N/X)/2
+    * or
+    * root of N=0.5*(X+N/X)
+    * We also take a precision value, higher the precision value, more accurate the root will be but more comparisons
+    * will take place;
+    * Then we find the error
+    *     error=|root -X|
+    * If the error is less than the precision value, it's our answer
+    * If the error is more than the precision value, then assign X=root and repeat the method
+    *
+    * Here we are selecting the precision as 1
+    *
+    * Note= Always convert error value to positive integer;
+    * */
 
+    static double newtonMethod(int num){
+     double x=num;
+     double precision=1;
+     double root;
+     while(true){
+         root=0.5*(x+num/x);
+
+         if(Math.abs(root-x)<precision){
+             break;
+         }
+         x=root;
+     }
+      return root;
+    }
     /*
     Approach 3
     In this we will be finding the precision value of the root.

@@ -44,6 +44,10 @@ public class squareRoot {
      while(true){
          root=0.5*(x+num/x);
 
+         //Math.abs if just making the integer positive
+         /*Or we can first take the root, then check if its is negative or not
+         * If yes, then multiply with -1
+         * Now simply do the comparison*/
          if(Math.abs(root-x)<precision){
              break;
          }
